@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_gray"
+    android:paddingBottom="5dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        >
+        <!--            android:background="@null"-->
+
+        <EditText
+            android:id="@+id/et_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/shape_input_bg"
+            android:hint="输入消息..."
+            android:maxLines="4"
+            android:minHeight="35dp"
+            android:padding="5dp"
+            android:textSize="12sp"
+            android:inputType="textMultiLine"
+            android:scrollHorizontally="false"
+            android:lineSpacingExtra="2dp"
+            />
+
+        <!-- 发送按钮 -->
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_btn_send_bg"
+            android:text="发送"
+            android:textColor="@android:color/white"
+            android:padding="2dp"
+            android:textSize="12sp"
+            android:visibility="visible" />
+        <!-- 语音输入提示（默认隐藏） -->
+        <TextView
+            android:id="@+id/tv_voice_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="切换到语音输入"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+        <ImageButton
+            android:id="@+id/btn_emoji"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/ic_emoji"
+            android:contentDescription="表情"
+            />
+        <ImageButton
+            android:id="@+id/btn_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:src="@drawable/ic_image"
+            android:contentDescription="文件"
+            />
+        <ImageButton
+            android:id="@+id/btn_folder"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:src="@drawable/ic_folder"
+            android:contentDescription="文件"
+            />
+        <ImageButton
+            android:id="@+id/btn_voice"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:src="@drawable/ic_voice"
+            android:contentDescription="语音"
+            />
+
+        <!-- 按住说话按钮（默认隐藏，语音模式显示） -->
+        <Button
+            android:id="@+id/btn_hold_to_talk"
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:background="@drawable/shape_btn_voice_bg"
+            android:text="按住说话"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

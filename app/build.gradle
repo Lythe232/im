@@ -1,0 +1,118 @@
+plugins {
+    alias(libs.plugins.android.application)
+    id 'com.google.gms.google-services'
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    id 'com.google.protobuf'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.lythe.media'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.lythe.chat"
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    sourceSets {
+        main {
+            proto {
+                srcDir 'src/main/proto'
+            }
+            java {
+                srcDirs += 'build/generated/source/proto/main/java'
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+        compose true
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.24.4'
+    }
+
+    generateProtoTasks {
+        all().each {
+            task ->
+                task.plugins {
+                    java {
+                        // 生成 Java 代码的选项：启用 Builder 模式、生成多个类文件（便于扩展）
+                        option 'lite'
+                    }
+                }
+        }
+    }
+}
+
+dependencies {
+    implementation project(':nativelib')
+
+    implementation platform(libs.firebase.bom)
+    implementation libs.firebase.auth
+    implementation libs.org.eclipse.paho.client.mqttv3
+
+    implementation libs.glide
+    annotationProcessor libs.compiler
+    // 可选：Android专用的服务库
+    //    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    implementation libs.circleimageview
+//    implementation libs.protobuf.java.util
+    implementation libs.protobuf.javalite
+
+    implementation libs.retrofit
+    implementation libs.converter.gson
+    implementation libs.logging.interceptor
+
+    implementation libs.room.runtime
+    implementation libs.room.ktx
+    kapt libs.room.compiler
+//    annotationProcessor libs.room.compiler
+
+    //debug
+    debugImplementation libs.leakcanary.android
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.annotation
+    implementation libs.constraintlayout
+    implementation libs.lifecycle.livedata.ktx
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.activity.compose
+    implementation platform(libs.compose.bom)
+    implementation libs.ui
+    implementation libs.ui.graphics
+    implementation libs.ui.tooling.preview
+    implementation libs.material3
+    implementation libs.activity
+    implementation libs.navigation.fragment
+    implementation libs.navigation.ui
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation platform(libs.compose.bom)
+    androidTestImplementation libs.ui.test.junit4
+    debugImplementation libs.ui.tooling
+    debugImplementation libs.ui.test.manifest
+}

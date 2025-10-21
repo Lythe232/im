@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--        <item-->
+<!--            android:id="@+id/sidebar_item_logout"-->
+<!--            android:icon="@drawable/ic_logout"-->
+<!--            android:title="退出登录" />-->
+        <!-- 用户相关功能组 -->
+        <group
+            android:id="@+id/group_user"
+            android:checkableBehavior="none">
+                <item
+                    android:id="@+id/sidebar_item_profile"
+                    android:icon="@drawable/ic_profile"
+                    android:title="个人资料"
+                    app:iconTint="@color/gray" />
+
+        <item
+            android:id="@+id/sidebar_item_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="退出登录"
+            app:iconTint="@color/gray"
+            />
+        </group>
+
+<!--        &lt;!&ndash; 内容相关功能组 &ndash;&gt;-->
+<!--        <group-->
+<!--            android:id="@+id/group_content"-->
+<!--            android:checkableBehavior="none"-->
+<!--            android:menuCategory="secondary">-->
+
+<!--                &lt;!&ndash; 分隔线 &ndash;&gt;-->
+<!--                <item-->
+<!--                    android:id="@+id/separator1"-->
+<!--                    android:title=""-->
+<!--                    android:enabled="false"-->
+<!--                    android:visible="true">-->
+<!--                        <menu>-->
+<!--                                <item-->
+<!--                                    android:title="内容管理"-->
+<!--                                    android:enabled="false"-->
+<!--                                    android:textSize="12sp"-->
+<!--                                    android:textColor="@color/gray"/>-->
+<!--                        </menu>-->
+<!--                </item>-->
+
+<!--                <item-->
+<!--                    android:id="@+id/sidebar_item_collect"-->
+<!--                    android:icon="@drawable/ic_back"-->
+<!--                    android:title="收藏"-->
+<!--                    app:iconTint="@color/gray" />-->
+
+<!--                <item-->
+<!--                    android:id="@+id/sidebar_item_album"-->
+<!--                    android:icon="@drawable/ic_back"-->
+<!--                    android:title="相册"-->
+<!--                    app:iconTint="@color/gray" />-->
+
+<!--                <item-->
+<!--                    android:id="@+id/sidebar_item_file"-->
+<!--                    android:icon="@drawable/ic_back"-->
+<!--                    android:title="文件"-->
+<!--                    app:iconTint="@color/gray" />-->
+<!--        </group>-->
+
+<!--        &lt;!&ndash; 系统功能组 &ndash;&gt;-->
+<!--        <group-->
+<!--            android:id="@+id/group_system"-->
+<!--            android:checkableBehavior="none"-->
+<!--            android:menuCategory="secondary">-->
+
+<!--                &lt;!&ndash; 分隔线 &ndash;&gt;-->
+<!--                <item-->
+<!--                    android:id="@+id/separator2"-->
+<!--                    android:title=""-->
+<!--                    android:enabled="false"-->
+<!--                    android:visible="true">-->
+<!--                        <menu>-->
+<!--                                <item-->
+<!--                                    android:title="系统选项"-->
+<!--                                    android:enabled="false"-->
+<!--                                    android:textSize="12sp"-->
+<!--                                    android:textColor="@color/gray"/>-->
+<!--                        </menu>-->
+<!--                </item>-->
+
+<!--                <item-->
+<!--                    android:id="@+id/sidebar_item_help"-->
+<!--                    android:icon="@drawable/ic_back"-->
+<!--                    android:title="帮助与反馈"-->
+<!--                    app:iconTint="@color/gray" />-->
+
+<!--                <item-->
+<!--                    android:id="@+id/sidebar_item_logout"-->
+<!--                    android:icon="@drawable/ic_logout"-->
+<!--                    android:title="退出登录"-->
+<!--                    app:iconTint="@color/red" /> &lt;!&ndash; 退出登录用红色突出显示 &ndash;&gt;-->
+<!--        </group>-->
+
+</menu>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#5DADEC</color>
+    <color name="colorPrimaryDark">#4A8BCA</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+
+    <!-- Accent Colors -->
+    <color name="colorAccent">#03DAC5</color>  <!-- 清新的蓝绿色，作为强调色 -->
+    <color name="colorOnAccent">#000000</color>  <!-- 黑色文字，放置在强调色上 -->
+
+    <!-- Background and Text Colors -->
+    <color name="colorBackground">#F5F5F5</color>  <!-- 背景色，浅灰色 -->
+    <color name="colorText">#212121</color>  <!-- 默认文本颜色，深灰色 -->
+    <color name="colorError">#B00020</color>  <!-- 错误提示色，红色 -->
+
+    <color name="gray">#FF888888</color>
+    <color name="light_gray">#FFF0F0F0</color>
+    <color name="green">#FF00C853</color> <!-- 微信/QQ在线绿 -->
+    <color name="red">#FFFF4444</color>    <!-- QQ未读红 -->
+
+    <color name="chat_gray">#E9E9EB</color> <!-- 他人消息气泡颜色 -->
+    <color name="chat_blue">#00B42A</color> <!-- 自己消息气泡颜色（QQ绿色） -->
+
+    <color name="chat_input_bg">#F0F0F0</color>
+    <color name="input_border">#DDDDDD</color>
+    <color name="voice_red">#FF4D4D</color>
+
+    <color name="fragment_background">#F0F2F5</color>
+    <color name="recycler_bg_color">#FFFFFF</color>
+    <color name="divider_color">#E5E7EB</color>
+    <color name="card_title_color">#1F2937</color>
+    <color name="card_desc_color">#6B7280</color>
+    <color name="color_like_red">#F44949</color>
+    <color name="color_text_secondary">#FF9800</color>
+</resources>

@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+package com.lythe.media.protobuf;
+//生成的 Java 类是否是内部类（false 表示生成独立类，便于引用）
+option java_multiple_files = true;
+//生成的 Java 类的外层类名（可自定义，如 ImMessageProto）
+option java_outer_classname = "MessageProto";
+
+// 订阅消息类型枚举 (区分文本 图片 语音)
+enum ImMessageType {
+  TEXT = 0;
+  IMAGE = 1;
+  VOICE = 2;
+  FILE = 3;
+  VIDEO = 4;
+}
+
+// 定义消息状态枚举(发送中 已发送 已读等)
+enum ImMessageStatus {
+  SENDING = 0;
+  SENT = 1;
+  DELIVERED = 2;
+  READ = 3;
+  FAILED = 4;
+}
+
+enum ImConversationType {
+  PRIVATE_CHAT = 0;
+  GROUP_CHAT = 1;
+  SYSTEM_NOTICE = 2;
+  CUSTOMER_SERVICE = 3;
+}
+
+// 统一内容类型（向前兼容：当oneof不覆盖的类型时，可用 content_type + content_bytes 承载）
+enum ImMessageContentType {
+  CONTENT_TEXT = 0;
+  CONTENT_IMAGE = 1;
+  CONTENT_VOICE = 2;
+  CONTENT_VIDEO = 3;
+  CONTENT_FILE  = 4;
+  CONTENT_STICKER = 5;
+  CONTENT_LOCATION = 6;
+  CONTENT_SYSTEM = 7;
+}
+
+// 核心消息结构体
+message ImMessage {
+  string message_id = 1;
+  string sender_id = 2;
+  string receiver_id = 3;
+  ImMessageType message_type = 4;
+  ImMessageStatus status = 5;
+  string session_id = 6; // deprecated: 请改用 conversation_id
+  int64 timestamp = 7;
+  //不同类型消息的内容
+  oneof content {
+    ImTextContent text_content = 8;
+    ImImageContent image_content = 9;
+    ImVoiceContent voice_content = 10;
+    ImVideoContent video_content = 24;
+    ImFileContent file_content = 25;
+    ImStickerContent sticker_content = 26;
+  }
+  ImConversationType conversation_type = 11;
+  map<string, string> extra_data = 12;
+  string version = 13;
+  string signature = 14;
+
+  // 新增：幂等与排序
+  string client_msg_id = 15;       // 客户端生成的幂等ID（用于去重）
+  int64 server_msg_seq = 16;       // 服务器分配的严格递增序列（会话内）
+  int64 server_timestamp = 17;     // 服务器时间戳
+
+  // 新增：会话统一ID（替代 session_id）
+  string conversation_id = 18;
+
+  // 新增：统一内容承载（当 oneof 未覆盖的类型或做加密/压缩打包时）
+  ImMessageContentType content_type = 19;
+  bytes content_bytes = 20;        // 序列化后的内容（如JSON/Proto二进制/加密密文）
+
+  // 新增：引用/回复、@ 提及、编辑标记
+  ImReplyInfo reply = 21;          // 引用/回复的元信息
+  repeated string mention_user_ids = 22; // @的用户ID
+  bool is_edited = 23;             // 是否被编辑过
+  string topic = 27;
+  int32 retryCount = 28;
+}
+
+message ImTextContent {
+  string text = 1;
+}
+
+message ImImageContent {
+  string image_url = 1;
+  string local_path = 2;
+  int32 width = 3;
+  int32 height = 4;
+  int64 file_size = 5;
+  string thumb_url = 6;  // 缩略图
+  string blur_hash = 7;  // 可选的占位符编码（如BlurHash）
+}
+
+message ImVoiceContent {
+  string voice_url = 1;
+  string local_path = 2;
+  int32 duration = 3;
+  int64 file_size = 4;
+}
+
+message ImVideoContent {
+  string video_url = 1;
+  string cover_url = 2;
+  int32 width = 3;
+  int32 height = 4;
+  int32 duration = 5;
+  int64 file_size = 6;
+}
+
+message ImFileContent {
+  string file_name = 1;
+  string file_url = 2;
+  int64 file_size = 3;
+  string mime_type = 4;
+}
+
+message ImStickerContent {
+  string sticker_id = 1;  // 贴纸包内ID
+  string pack_id = 2;     // 贴纸包ID
+  string url = 3;         // 远程资源
+}
+
+message ImReplyInfo {
+  string reply_to_message_id = 1; // 被回复的消息ID
+  ImMessageType reply_to_type = 2; // 被回复消息类型（简化渲染）
+  string preview_text = 3;       // 预览文本（如图片则可为"[图片]")
+}
+
+message MessageAck {
+  string message_id = 1;
+  string receiver_id = 2;
+  ImMessageStatus status = 3;
+  int64 ack_timestamp = 4;
+  string error_message = 5;
+}
+
+message BatchMessages {
+  repeated ImMessage messages = 1;
+  int32 total_count = 2;
+}
+
+message MessageQuery {
+  string conversation_id = 1;
+  int64  start_timestamp = 2;
+  int64  end_timestamp = 3;
+  int32 limit = 4;
+  string cursor = 5;
+}
+
+message MessageQueryResponse {
+  repeated ImMessage messages = 1;
+  bool has_more = 2;
+  string next_cursor = 3;
+  int32 total_count = 4;
+}
+
+

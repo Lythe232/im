@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "931881321491",
+    "project_id": "com-lythe-chat",
+    "storage_bucket": "com-lythe-chat.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931881321491:android:a1701c09cd37d2e4e9abe6",
+        "android_client_info": {
+          "package_name": "com.lythe.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkzHOy0P5jx0YrdFAqv9ijgRC5nHctDTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

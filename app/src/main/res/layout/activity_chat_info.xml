@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    tools:context=".ui.ChatInfoActivity">
+    <com.lythe.media.chats.view.ChatTopBarView
+        android:id="@+id/chat_top_bar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.lythe.media.chats.view.ChatTopBarView>
+    <ProgressBar
+        android:id="@+id/loadingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_info_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/light_gray"
+        >
+<!--        android:background="@android:color/transparent"-->
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <com.lythe.media.chats.view.ChatInputView
+        android:id="@+id/chat_input_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/light_gray"
+        />
+</LinearLayout>
